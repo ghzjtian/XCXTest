@@ -13,6 +13,8 @@
 	"projectname": "test3",
 	"isGameTourist": false,
 	"condition": {
+
+    
 		"search": {
 			"current": -1,
 			"list": []

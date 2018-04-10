@@ -7,7 +7,15 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+
+    text: 'init data',
+    array: [{ msg: '1' }, { msg: '2' }],
+    num: 0,
+    array: [{ text: 'init data' }],
+    object: {
+      text: 'init data2'
+    }
   },
   //事件处理函数
   bindViewTap: function() {
@@ -16,6 +24,7 @@ Page({
     })
   },
   onLoad: function () {
+    console.log('onLoad function!')
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -50,5 +59,76 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+
+  onReady: function () {
+    // Do something when page ready.
+    console.log('onReady function!')
+  },
+  onShow: function () {
+    console.log('onShow function!')
+    // Do something when page show.
+  },
+  onHide: function () {
+    console.log('onHide function!')
+    // Do something when page hide.
+  },
+  onUnload: function () {
+    console.log('onUnload function!')
+    // Do something when page close.
+  },
+  onPullDownRefresh: function () {
+    console.log('onPullDownRefresh function!')
+    // Do something when pull down.
+  },
+  onReachBottom: function () {
+    console.log('onReachBottom function!')
+    // Do something when page reach bottom.
+  },
+  onShareAppMessage: function () {
+    console.log('onShareAppMessage function!')
+    // return custom share data when user share.
+    return {
+      title: '自定义转发标题4',
+      path: 'pages/logs/logs'//用户点击了分享的链接后，就会跳转到指定的页面
+    }
+  },
+  onPageScroll: function () {
+    console.log('onPageScroll function!')
+    // Do something when page scroll
   }
+,
+  viewTap: function () {
+    console.log('view tap')
+  },
+
+  changeText: function () {
+    // this.data.text = 'changed data'  // bad, it can not work
+    this.setData({
+      text: 'changed data'
+    })
+  },
+  changeNum: function () {
+    this.data.num ++
+    this.setData({
+      num: this.data.num
+    })
+  },
+  changeItemInArray: function () {
+    // you can use this way to modify a danamic data path
+    this.setData({
+      'array[0].text': 'changed data'
+    })
+  },
+  changeItemInObject: function () {
+    this.setData({
+      'object.text': 'changed data'
+    });
+  },
+  addNewField: function () {
+    this.setData({
+      'newField.text': 'new data'
+    })
+  }
+
 })
